@@ -8,6 +8,8 @@ services:
       - ./html:/var/www/html
     ports:
       - "80:80"
+    networks:
+      - lamp-network
     depends_on:
       - db
 
@@ -17,11 +19,12 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: nathreddy
+      MYSQL_ROOT_PASSWORD: sainath
       MYSQL_DATABASE: drupal
       MYSQL_USER: drupal
       MYSQL_PASSWORD: drupal
-    
+    networks:
+      - lamp-network
 
   drupal:
     image: drupal:10
@@ -33,6 +36,8 @@ services:
       - drupal-profiles:/var/www/html/profiles
       - drupal-sites:/var/www/html/sites
       - drupal-themes:/var/www/html/themes
+    networks:
+      - lamp-network
     depends_on:
       - db
 
@@ -43,4 +48,6 @@ volumes:
   drupal-sites:
   drupal-themes:
 
-
+networks:
+  lamp-network:
+    driver: bridge
