@@ -38,6 +38,7 @@ services:
       - drupal-themes:/var/www/html/themes
       - ./custom-themes:/var/www/html/custom-themes 
       - ./config:/var/www/html/sites/default/config
+      - drupal-logs:/var/www/html/logs
     networks:
       - lamp-network
     depends_on:
