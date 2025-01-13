@@ -36,6 +36,8 @@ services:
       - drupal-profiles:/var/www/html/profiles
       - drupal-sites:/var/www/html/sites
       - drupal-themes:/var/www/html/themes
+      - ./custom-themes:/var/www/html/custom-themes 
+      - ./config:/var/www/html/sites/default/config
     networks:
       - lamp-network
     depends_on:
